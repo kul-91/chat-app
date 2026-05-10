@@ -13,7 +13,7 @@ import { Toaster } from 'react-hot-toast';
 import { useThemeStore } from './store/useThemeStore';
 
 const App = () => {
-  const { authUser, checkAuth, isChecking, onlineUsers } = useAuthStore();
+  const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
   const { theme } = useThemeStore();
 
   console.log({ onlineUsers });
@@ -27,9 +27,9 @@ const App = () => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  if (isChecking && authUser) return (
+  if (isCheckingAuth && !authUser) return (
 
-    <div className='flex items-center justify-centre h-screen'>
+    <div className='flex items-center justify-center h-screen'>
       <Loader className='size-10 animate-spin' />
     </div>
   )
