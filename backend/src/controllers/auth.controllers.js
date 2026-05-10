@@ -1,6 +1,7 @@
 import { generateToken } from "../lib/utils.js";
 import User from "../models/user.model.js"
 import bcrypt from "bcryptjs"
+import cloudinary from "../lib/cloudinary.js";
 
 export const signup = async (req, res) => {
     const { fullName, email, password } = req.body;
@@ -95,7 +96,7 @@ export const updateProfile = async (req, res) => {
 
         res.status(200).json(upadatedUser);
     } catch (error) {
-    console.log("error in update profile: ", error.message);
+    console.log("error in update profile: ", error.message);    // error.meassage kya krta h
     res.status(500).json({ message: "Internal Server Error" });
     }
 };
